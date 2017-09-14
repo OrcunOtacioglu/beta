@@ -18,7 +18,7 @@ class CreateAttendeesTable extends Migration
 
             $table->string('name');
             $table->string('surname')->nullable();
-            $table->string('email');
+            $table->string('email')->unique();
 
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
@@ -27,7 +27,7 @@ class CreateAttendeesTable extends Migration
             $table->string('country')->nullable();
 
             $table->string('password');
-            $table->string('remember_token');
+            $table->rememberToken();
 
             $table->timestamps();
         });
