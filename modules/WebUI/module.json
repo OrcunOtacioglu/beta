@@ -1,0 +1,16 @@
+{
+    "name": "WebUI",
+    "alias": "webui",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\WebUI\\Providers\\WebUIServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
