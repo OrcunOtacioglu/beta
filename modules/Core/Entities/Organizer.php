@@ -26,6 +26,11 @@ class Organizer extends Model
         'settings',
     ];
 
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
     public function events()
     {
         return $this->hasMany(Event::class);
