@@ -20,6 +20,7 @@ class CreateRatesTable extends Migration
             $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('cascade');
 
             $table->string('name');
+            $table->string('unique_identifier');
             $table->integer('max_quantity')->nullable();
             $table->integer('type');
             $table->decimal('price');
