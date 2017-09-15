@@ -9,8 +9,18 @@ use Modules\API\Http\Requests\UpdateAttendee;
 
 class Attendee extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'attendees';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'surname',
@@ -24,16 +34,31 @@ class Attendee extends Model
         'remember_token'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'password',
         'remember_token'
     ];
 
+    /**
+     * Returns the related Orders.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
 
+    /**
+     * Creates a new Attendee entity.
+     *
+     * @param StoreAttendee $request
+     */
     public static function storeNew(StoreAttendee $request)
     {
         $attendee = new Attendee();
@@ -57,6 +82,12 @@ class Attendee extends Model
         $attendee->save();
     }
 
+    /**
+     * Updates the given Attendee entity.
+     *
+     * @param UpdateAttendee $request
+     * @param $id
+     */
     public static function updateEntity(UpdateAttendee $request, $id)
     {
         $attendee = Attendee::find($id);

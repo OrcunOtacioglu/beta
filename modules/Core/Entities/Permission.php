@@ -9,17 +9,37 @@ use Modules\API\Http\Requests\UpdatePermission;
 
 class Permission extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'permissions';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name', 'title'
     ];
 
+    /**
+     * Returns the related Role entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
-        return $this-$this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
+    /**
+     * Creates a new Permission entity.
+     *
+     * @param StorePermission $request
+     */
     public static function storeNew(StorePermission $request)
     {
 
@@ -36,6 +56,12 @@ class Permission extends Model
 
     }
 
+    /**
+     * Updates the given Permission entity.
+     *
+     * @param UpdatePermission $request
+     * @param $id
+     */
     public static function updateEntity(UpdatePermission $request, $id)
     {
         $permission = Permission::find($id);

@@ -9,8 +9,18 @@ use Modules\API\Http\Requests\UpdateAccount;
 
 class Account extends Model
 {
+    /**
+     * Table name
+     *
+     * @var string
+     */
     protected $table = 'accounts';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'organizer_id',
         'username',
@@ -20,20 +30,40 @@ class Account extends Model
         'password',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'password', 'remember_token'
     ];
 
+    /**
+     * Returns related Organizer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function organizer()
     {
         return $this->belongsTo(Organizer::class);
     }
 
+    /**
+     * Returns related Roles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'account_role', 'account_id', 'role_id');
     }
 
+    /**
+     * Creates a new Account entity.
+     *
+     * @param StoreAccount $request
+     */
     public static function storeNew(StoreAccount $request)
     {
         $account = new Account();
@@ -51,6 +81,12 @@ class Account extends Model
         $account->save();
     }
 
+    /**
+     * Updates the given Account entity.
+     *
+     * @param UpdateAccount $request
+     * @param $id
+     */
     public static function updateEntity(UpdateAccount $request, $id)
     {
         $account = Account::find($id);

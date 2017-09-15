@@ -10,8 +10,18 @@ use Modules\Core\Lib\Helpers;
 
 class Order extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'orders';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'attendee_id',
         'event_id',
@@ -22,21 +32,41 @@ class Order extends Model
         'total'
     ];
 
+    /**
+     * Returns related Attendee entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function attendee()
     {
         return $this->belongsTo(Attendee::class);
     }
 
+    /**
+     * Returns related Event entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
+    /**
+     * Returns related Item entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function items()
     {
         return $this->hasMany(OrderItem::class);
     }
 
+    /**
+     * Creates a new Order entity.
+     *
+     * @param StoreOrder $request
+     */
     public static function storeNew(StoreOrder $request)
     {
         $order = new Order();
@@ -62,6 +92,12 @@ class Order extends Model
         $order->save();
     }
 
+    /**
+     * Updates the given Order entity.
+     *
+     * @param UpdateOrder $request
+     * @param $reference
+     */
     public static function updateEntity(UpdateOrder $request, $reference)
     {
         $order = Order::where('reference', '=', $reference)->first();

@@ -10,8 +10,18 @@ use Modules\Core\Lib\Helpers;
 
 class OrderItem extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'order_items';
 
+    /**
+     * Mass assignable fields
+     *
+     * @var array
+     */
     protected $fillable = [
         'order_id',
         'product_identifier',
@@ -20,11 +30,21 @@ class OrderItem extends Model
         'subtotal'
     ];
 
+    /**
+     * Returns the related Order entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
+    /**
+     * Creates a new Order Item entity.
+     *
+     * @param StoreOrderItem $request
+     */
     public static function storeNew(StoreOrderItem $request)
     {
         $orderItem = new OrderItem();
@@ -41,6 +61,12 @@ class OrderItem extends Model
         $orderItem->save();
     }
 
+    /**
+     * Updates the given Order Item entity.
+     *
+     * @param UpdateOrderItem $request
+     * @param $id
+     */
     public static function updateEntity(UpdateOrderItem $request, $id)
     {
         $orderItem = OrderItem::find($id);
