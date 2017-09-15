@@ -1,0 +1,15 @@
+{
+    "name": "acikgise/dashboard",
+    "description": "",
+    "authors": [
+        {
+            "name": "Orçun Otacıoğlu",
+            "email": "otacioglu.orcun@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Dashboard\\": ""
+        }
+    }
+}
