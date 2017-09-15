@@ -9,8 +9,18 @@ use Modules\API\Http\Requests\UpdateRate;
 
 class Rate extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'rates';
 
+    /**
+     * Mass assignable fileds.
+     *
+     * @var array
+     */
     protected $fillable = [
         'organizer_id',
         'name',
@@ -29,16 +39,31 @@ class Rate extends Model
         'ticket_delivery'
     ];
 
+    /**
+     * Returns the related Organizer entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function organizer()
     {
         return $this->belongsTo(Organizer::class);
     }
 
+    /**
+     * Returns the related Rate entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function rates()
     {
         return $this->belongsToMany(Event::class, 'event_rate', 'rate_id', 'event_id');
     }
 
+    /**
+     * Creates a new Rate entity.
+     *
+     * @param StoreRate $request
+     */
     public static function storeNew(StoreRate $request)
     {
         $rate = new Rate();
@@ -69,6 +94,12 @@ class Rate extends Model
         $rate->save();
     }
 
+    /**
+     * Updates the given Rate entity.
+     *
+     * @param UpdateRate $request
+     * @param $id
+     */
     public static function updateEntity(UpdateRate $request, $id)
     {
         $rate = Rate::find($id);

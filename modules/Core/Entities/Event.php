@@ -10,8 +10,18 @@ use Modules\Core\Lib\Helpers;
 
 class Event extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'events';
 
+    /**
+     * Mass assignable fileds.
+     *
+     * @var array
+     */
     protected $fillable = [
         'organizer_id',
         'category_id',
@@ -27,26 +37,51 @@ class Event extends Model
         'cover_image_path',
     ];
 
+    /**
+     * Returns the related Organizer entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function organizer()
     {
         return $this->belongsTo(Organizer::class);
     }
 
+    /**
+     * Returns the related Category entity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * Returns the related Order entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
 
+    /**
+     * Returns the related Rate entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function rates()
     {
         return $this->belongsToMany(Event::class, 'event_rate', 'event_id', 'rate_id');
     }
 
+    /**
+     * Creates a new Event entity.
+     *
+     * @param StoreEvent $request
+     */
     public static function storeNew(StoreEvent $request)
     {
         $event = new Event();
@@ -80,6 +115,12 @@ class Event extends Model
         $event->save();
     }
 
+    /**
+     * Updates the given Event entity.
+     *
+     * @param UpdateEvent $request
+     * @param $id
+     */
     public static function updateEntity(UpdateEvent $request, $id)
     {
         $event = Event::find($id);

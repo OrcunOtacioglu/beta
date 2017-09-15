@@ -9,8 +9,18 @@ use Modules\API\Http\Requests\UpdateOrganizer;
 
 class Organizer extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'organizers';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'address',
@@ -26,21 +36,41 @@ class Organizer extends Model
         'settings',
     ];
 
+    /**
+     * Returns the related Account entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function accounts()
     {
         return $this->hasMany(Account::class);
     }
 
+    /**
+     * Returns the related Event entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function events()
     {
         return $this->hasMany(Event::class);
     }
 
+    /**
+     * Returns the related Rate entities.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function rates()
     {
         return $this->hasMany(Rate::class);
     }
 
+    /**
+     * Creates a new Organizer entity.
+     *
+     * @param StoreOrganizer $request
+     */
     public static function storeNew(StoreOrganizer $request)
     {
         $organizer = new Organizer();
@@ -63,6 +93,12 @@ class Organizer extends Model
         $organizer->save();
     }
 
+    /**
+     * Updates the given Organizer entity.
+     *
+     * @param UpdateOrganizer $request
+     * @param $id
+     */
     public static function updateEntity(UpdateOrganizer $request, $id)
     {
         $organizer = Organizer::find($id);
