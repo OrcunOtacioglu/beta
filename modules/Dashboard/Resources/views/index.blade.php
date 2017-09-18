@@ -1,9 +1,19 @@
 @extends('dashboard::layouts.master')
 
-@section('content')
-    <h1 class="red">Hello World</h1>
+@section('title', 'Dashboard')
 
-    <p>
-        This view is loaded from module: {!! config('dashboard.name') !!}
-    </p>
+@section('body.class', 'site-menubar-fold site-menubar-keep')
+
+@section('content')
+    <div class="row">
+
+        <div class="col-md-6">
+
+        </div>
+
+        <div class="col-md-6">
+
+        </div>
+
+    </div>
 @stop
