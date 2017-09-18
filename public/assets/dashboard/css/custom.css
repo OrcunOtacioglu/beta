@@ -1,0 +1,55 @@
+.create-footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    z-index: 999;
+    border-top: 1px solid rgb(219, 226, 237);
+    background: rgb(255, 255, 255);
+}
+
+.create-content-wrapper {
+    margin: 0px auto;
+    max-width: 1440px;
+}
+
+.create-content {
+    width: 66.5%;
+    margin-left: 15%;
+    padding: 12px;
+}
+
+.create-details-content {
+    width: 50%;
+}
+
+.create-details-text {
+    line-height: 32px;
+    margin-bottom: 0;
+}
+
+.setup {
+    float: right;
+    width: 50%;
+    padding: 0;
+}
+
+.note-toolbar {
+    background: #e4eaec !important;
+}
+
+.page-event-sortlist {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    z-index: 2;
+}
+
+.event-item {
+    border-bottom-color: #e4eaec;
+}
+
+.text-indigo {
+    color: #677AE4;
+}
