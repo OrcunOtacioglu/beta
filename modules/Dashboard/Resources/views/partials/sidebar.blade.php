@@ -16,16 +16,47 @@
                         <a href="javascript:void(0)">
                             <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
                             <span class="site-menu-title">Events</span>
+                            <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
-                                <a class="animsition-link" href="#">
-                                    <span class="site-menu-title">Create New Event</span>
+                            <li class="site-menu-item">
+                                <a class="animsition-link"
+                                   href="{{ url('/dashboard/event/create') }}">
+                                    <span class="site-menu-title">
+                                        <i class="icon wb-plus-circle"></i> Create New Event
+                                    </span>
                                 </a>
                             </li>
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ url('/dashboard/event') }}">
+                                    <span class="site-menu-title">
+                                        <i class="icon wb-wrench"></i> Manage Events
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Finance -->
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                            <span class="site-menu-title">Orders & Attendees</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="#">
-                                    <span class="site-menu-title">Manage Events</span>
+                                    <span class="site-menu-title">
+                                        <i class="icon wb-payment"></i> Manage Orders
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="#">
+                                    <span class="site-menu-title">
+                                        <i class="icon wb-user"></i> Manage Attendees
+                                    </span>
                                 </a>
                             </li>
                         </ul>
@@ -36,41 +67,14 @@
                         <a href="javascript:void(0)">
                             <i class="site-menu-icon wb-wrench" aria-hidden="true"></i>
                             <span class="site-menu-title">Management</span>
+                            <span class="site-menu-arrow"></span>
                         </a>
                         <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="#">
-                                    <span class="site-menu-title">Page Management</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Sales -->
-                    <li class="site-menu-item has-sub">
-                        <a href="javascript:void(0)">
-                            <i class="site-menu-icon wb-stats-bars" aria-hidden="true"></i>
-                            <span class="site-menu-title">Sales</span>
-                        </a>
-                        <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
-                                <a class="animsition-link" href="#">
-                                    <span class="site-menu-title">All Sales</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Invoices -->
-                    <li class="site-menu-item has-sub">
-                        <a href="javascript:void(0)">
-                            <i class="site-menu-icon wb-order" aria-hidden="true"></i>
-                            <span class="site-menu-title">Invoices</span>
-                        </a>
-                        <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
-                                <a class="animsition-link" href="#">
-                                    <span class="site-menu-title">Manage Invoices</span>
+                                    <span class="site-menu-title">
+                                        <i class="icon wb-copy"></i> Page Management
+                                    </span>
                                 </a>
                             </li>
                         </ul>

@@ -1,6 +1,6 @@
 <footer class="site-footer">
-    <div class="site-footer-legal">© 2017 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+    <div class="site-footer-legal">© 2017 <a href="{{ env('SOFTWARE_HOUSE_HOME_PAGE') }}">{{ env('SOFTWARE_HOUSE') }}</a></div>
     <div class="site-footer-right">
-        Crafted with <i class="red-600 wb wb-heart"></i> by <a href="http://themeforest.net/user/amazingSurge">amazingSurge</a>
+        Crafted with <i class="red-600 wb wb-heart"></i> by <a href="http://github.com/OrcunOtacioglu">AçıkGişe</a>
     </div>
 </footer>

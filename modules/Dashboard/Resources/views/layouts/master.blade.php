@@ -45,11 +45,28 @@
 
     <!-- Page -->
     <div class="page">
-        <div class="page-content container-fluid">
-            <div class="row">
 
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">@yield('title')</h1>
+            <p>@yield('page-description')</p>
+
+            <div class="page-header-actions">
+                <div class="btn-group btn-group-sm" id="withBtnGroup" aria-label="Page Header Actions" role="group">
+                    @yield('page-header')
+                </div>
             </div>
         </div>
+        <!-- End Page Header -->
+
+        <!-- Page Content -->
+        <div class="page-content container-fluid">
+            <div class="row">
+                @yield('content')
+            </div>
+        </div>
+        <!-- End Page Content -->
+
     </div>
     <!-- End Page -->
 
