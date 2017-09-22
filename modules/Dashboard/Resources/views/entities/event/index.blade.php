@@ -1,10 +1,10 @@
 @extends('dashboard::layouts.master')
 
-@section('title', 'Manage Your Events')
+@section('title', 'Events')
 
 @section('page-description')
-    This panel allows you to manage the settings for your events.
-    View, edit and delete events or add new events.
+    <p class="mb-0">This panel allows you to manage the settings for your events.</p>
+    <p class="mb-0">View, edit and delete events or add new events.</p>
 @stop
 
 @section('page-header')
