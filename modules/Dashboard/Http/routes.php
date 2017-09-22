@@ -4,4 +4,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'dashboard', 'namespace' => 'Mo
 {
     Route::get('/', 'DashboardController@index');
     Route::resource('/event', 'EventController');
+    Route::resource('/order', 'OrderController');
+    Route::resource('/attendee', 'AttendeeController');
+    Route::resource('/page', 'PageController');
 });

@@ -37,7 +37,7 @@
                         </ul>
                     </li>
 
-                    <!-- Finance -->
+                    <!-- Orders & Attendees -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
                             <i class="site-menu-icon wb-users" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="#">
+                                <a class="animsition-link" href="{{ url('/dashboard/order') }}">
                                     <span class="site-menu-title">
                                         <i class="icon wb-payment"></i> Manage Orders
                                     </span>
@@ -62,6 +62,14 @@
                         </ul>
                     </li>
 
+                    <!-- Reports -->
+                    <li class="site-menu-item">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon wb-stats-bars" aria-hidden="true"></i>
+                            <span class="site-menu-title">Reports</span>
+                        </a>
+                    </li>
+
                     <!-- Site Management -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
@@ -71,9 +79,16 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="#">
+                                <a class="animsition-link" href="{{ url('/dashboard/page') }}">
                                     <span class="site-menu-title">
                                         <i class="icon wb-copy"></i> Page Management
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ url('/dashboard/page') }}">
+                                    <span class="site-menu-title">
+                                        <i class="icon wb-settings"></i> System Settings
                                     </span>
                                 </a>
                             </li>
