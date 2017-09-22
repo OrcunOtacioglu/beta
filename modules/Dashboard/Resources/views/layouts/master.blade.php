@@ -49,7 +49,7 @@
         <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title">@yield('title')</h1>
-            <p>@yield('page-description')</p>
+            @yield('page-description')
 
             <div class="page-header-actions">
                 <div class="btn-group btn-group-sm" id="withBtnGroup" aria-label="Page Header Actions" role="group">
@@ -61,7 +61,7 @@
 
         <!-- Page Content -->
         <div class="page-content container-fluid">
-            <div class="row">
+            <div class="row" id="root">
                 @yield('content')
             </div>
         </div>
