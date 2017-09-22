@@ -77,6 +77,16 @@ class Event extends Model
         return $this->belongsToMany(Event::class, 'event_rate', 'event_id', 'rate_id');
     }
 
+    public function venue()
+    {
+        return $this->hasOne(Venue::class);
+    }
+
+    public function seats()
+    {
+        return $this->hasManyThrough(Seat::class, Rate::class);
+    }
+
     /**
      * Creates a new Event entity.
      *
