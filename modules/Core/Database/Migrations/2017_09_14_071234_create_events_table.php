@@ -31,6 +31,11 @@ class CreateEventsTable extends Migration
             $table->integer('listing')->default(0);
             $table->boolean('is_featured')->default(0);
 
+            $table->boolean('is_reserved')->default(false);
+
+            $table->integer('venue_id')->unsigned()->nullable();
+            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('set null');
+
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->dateTime('on_sale_date');

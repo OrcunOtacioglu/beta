@@ -50,13 +50,18 @@ class Rate extends Model
     }
 
     /**
-     * Returns the related Rate entities.
+     * Returns the related Event entities.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function rates()
+    public function events()
     {
         return $this->belongsToMany(Event::class, 'event_rate', 'rate_id', 'event_id');
+    }
+
+    public function seats()
+    {
+        return $this->hasMany(Seat::class);
     }
 
     /**

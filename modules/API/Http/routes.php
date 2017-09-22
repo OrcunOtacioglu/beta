@@ -13,6 +13,7 @@ Route::namespace('Modules\API\Http\Controllers')->prefix('api')->group(function 
     Route::resource('/category', 'CategoryController', ['except' => ['create', 'edit']]);
     Route::resource('/event', 'EventController', ['except' => ['create', 'edit']]);
     Route::resource('/rate', 'RateController', ['except' => ['create', 'edit']]);
+    Route::resource('/page', 'PageController', ['except' => ['create', 'edit']]);
 
     // EVENT RELATED
     Route::resource('/attendee', 'AttendeeController', ['except' => ['create', 'edit']]);

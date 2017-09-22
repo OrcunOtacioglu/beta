@@ -102,6 +102,7 @@
 
             <div class="panel-body">
 
+                <!-- EVENT CATEGORY -->
                 <div class="form-group">
                     <label for="category" class="pb-0">Category</label>
                     <span class="text-help mt-0">This will help people to find your event.</span>
@@ -112,7 +113,9 @@
                         <option value="3">Sanat</option>
                     </select>
                 </div>
+                <!-- END EVENT CATEGORY -->
 
+                <!-- EVENT LISTING -->
                 <div class="form-group">
                     <label for="listing" class="pb-0">Listing</label>
                     <span class="text-help mt-0">Anyone can see and search for public events.</span>
@@ -121,7 +124,9 @@
                         <option value="1">Unlisted</option>
                     </select>
                 </div>
+                <!-- END EVENT LISTING -->
 
+                <!-- FEATURED EVENT -->
                 <div class="form-group">
                     <label for="listing" class="pb-0">Featured event?</label>
                     <span class="text-help mt-0">Featured events will show up on the top listing.</span>
@@ -130,6 +135,7 @@
                         <option value="1">No</option>
                     </select>
                 </div>
+                <!-- END FEATURED EVENT -->
 
             </div>
         </div>
