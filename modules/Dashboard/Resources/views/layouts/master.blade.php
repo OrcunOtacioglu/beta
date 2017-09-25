@@ -44,7 +44,7 @@
     @include('dashboard::partials.sidebar')
 
     <!-- Page -->
-    <div class="page">
+    <div class="page" id="app">
 
         <!-- Page Header -->
         <div class="page-header">

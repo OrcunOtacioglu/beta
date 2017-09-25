@@ -1,9 +1,14 @@
 @extends('dashboard::layouts.master')
 
+@section('custom.meta')
+    <!-- @TODO GET THIS VALUE DYNAMICALLY -->
+    <meta name="organizer" content="1">
+@stop
+
 @section('title', 'Create New Event')
 
 @section('custom.css')
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/vendor/dropify/dropify.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dashboard/css/vendor/dropzone/dropzone.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/vendor/summernote/summernote.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/vendor/bootstrapDateTimePicker/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dashboard/css/vendor/select2/select2.min.css') }}">
@@ -23,7 +28,7 @@
                 <!-- EVENT TITLE -->
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title">
+                    <input type="text" class="form-control" id="title" name="title" v-model="title">
                 </div>
                 <!-- END EVENT TITLE -->
 
@@ -53,7 +58,7 @@
                         <div class="form-group">
                             <label for="startDate">Start Date</label>
                             <div class="input-group">
-                                <input type="text" name="startDate" id="startDate" class="form-control">
+                                <input type="text" name="startDate" id="startDate" class="form-control" data-date-format="yyyy-mm-dd hh:ii">
                                 <div class="input-group-addon">
                                     <i class="icon wb-calendar"></i>
                                 </div>
@@ -64,7 +69,7 @@
                         <div class="form-group">
                             <label for="endDate">End Date</label>
                             <div class="input-group">
-                                <input type="text" name="endDate" id="endDate" class="form-control">
+                                <input type="text" name="endDate" id="endDate" class="form-control" data-date-format="yyyy-mm-dd hh:ii">
                                 <div class="input-group-addon">
                                     <i class="icon wb-calendar"></i>
                                 </div>
@@ -75,7 +80,7 @@
                         <div class="form-group">
                             <label for="onSaleDate">On Sale Date</label>
                             <div class="input-group">
-                                <input type="text" name="onSaleDate" id="onSaleDate" class="form-control">
+                                <input type="text" name="onSaleDate" id="onSaleDate" class="form-control" data-date-format="yyyy-mm-dd hh:ii">
                                 <div class="input-group-addon">
                                     <i class="icon wb-calendar"></i>
                                 </div>
@@ -106,7 +111,8 @@
                 <div class="form-group">
                     <label for="category" class="pb-0">Category</label>
                     <span class="text-help mt-0">This will help people to find your event.</span>
-                    <select name="category" id="category" class="form-control">
+                    <select name="category" id="category" class="form-control" v-model="category_id">
+                        <option value="">Select category</option>
                         <option value="0">Müzik</option>
                         <option value="1">Spor</option>
                         <option value="2">Gala</option>
@@ -119,7 +125,7 @@
                 <div class="form-group">
                     <label for="listing" class="pb-0">Listing</label>
                     <span class="text-help mt-0">Anyone can see and search for public events.</span>
-                    <select name="listing" id="listing" class="form-control">
+                    <select name="listing" id="listing" class="form-control" v-model="listing">
                         <option value="0">Public (recommended)</option>
                         <option value="1">Unlisted</option>
                     </select>
@@ -130,7 +136,7 @@
                 <div class="form-group">
                     <label for="listing" class="pb-0">Featured event?</label>
                     <span class="text-help mt-0">Featured events will show up on the top listing.</span>
-                    <select name="listing" id="listing" class="form-control">
+                    <select name="listing" id="listing" class="form-control" v-model="is_featured">
                         <option value="0">Yes</option>
                         <option value="1">No</option>
                     </select>
@@ -151,7 +157,7 @@
                 <!-- Title Form Input -->
                 <div class="form-group">
                     <label for="location">Location</label>
-                    <select name="location" id="location" class="form-control countries"></select>
+                    <select name="location" id="location" class="form-control countries" v-model="location"></select>
                 </div>
             </div>
         </div>
@@ -165,9 +171,11 @@
 
             <div class="panel-body">
                 <!-- Media Form Input -->
-                <span class="text-help mt-0">Upload a photo that captures the spirit of your event. Use a high-quality JPG or PNG file that is at least 1110 x 444 px (2.5x1 ratio) and no larger than 5mb.
+                <span class="text-help mt-0">Upload a photo that captures the spirit of your event. Use a high-quality JPG or PNG file that is at least 1110 x 444 px (2.5x1 ratio) and no larger than 3mb.
 Avoid including any text on the photo as it will not always be legible.</span>
-                <input type="file" class="dropify">
+                <form action="{{ env('API_URL') }}/image" method="POST" class="dropzone" id="dropzone" name="photo">
+                    {{ csrf_field() }}
+                </form>
             </div>
         </div>
         <!-- END EVENT MEDIA -->
@@ -185,9 +193,9 @@ Avoid including any text on the photo as it will not always be legible.</span>
 
                 <div class="setup">
                     <div class="float-right">
-                        <a href="#" class="btn btn-success">
+                        <button class="btn btn-success" onclick="eventData.postEventData()">
                             <i class="icon wb-share"></i> Publish
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -196,10 +204,13 @@ Avoid including any text on the photo as it will not always be legible.</span>
 @stop
 
 @section('footer.scripts')
-    <script src="{{ asset('assets/dashboard/js/plugins/dropify.min.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/plugins/summernote.min.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/plugins/select2.min.js') }}"></script>
     <script src="{{ asset('assets/dashboard/js/config/countries.js') }}"></script>
-    <script src="{{ asset('assets/dashboard/js/pages/eventCreate.js') }}"></script>
+    <!-- @TODO INCLUDE VUE AND AXIOS IN CORE.JS -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('assets/dashboard/js/plugins/dropzone.min.js') }}"></script>
+    <script src="{{ asset('assets/dashboard/js/pages/event.js') }}"></script>
 @stop
